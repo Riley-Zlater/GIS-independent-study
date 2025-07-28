@@ -9,3 +9,6 @@ backend/__pycache__/
 
 # Ignore node modules for frontend
 frontend/node_modules/
+
+# Ignore build artifacts for frontend
+ngrok.exe

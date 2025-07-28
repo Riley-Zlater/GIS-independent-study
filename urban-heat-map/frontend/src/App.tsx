@@ -5,7 +5,7 @@ import MapView from './components/MapView';
 const App: React.FC = () => {
     return (
         <div className="App">
-            <h1>Urban Heat Map</h1>
+            <h1>United States Heat Map</h1>
             <MapView />
         </div>
     );
