@@ -18,11 +18,19 @@ if os.path.exists(CACHE_FILE):
 else:
     TEMP_CACHE = {}
 
+
 # Zoom level → number of lat/lon samples per tile
-SAMPLES_BY_ZOOM = {5: 16, 6: 32}
+SAMPLES_BY_ZOOM = {5: 16} #, 6: 32}
 
 GLOBAL_MIN = 10
 GLOBAL_MAX = 40
+
+US_BOUNDS = {
+    "lat_min": 24.396308,  # Southernmost point
+    "lat_max": 49.384358,  # Northernmost point
+    "lon_min": -125.0,     # Westernmost point
+    "lon_max": -66.93457   # Easternmost point
+}
 
 
 def fetch_point_temp(lat, lon):
@@ -59,6 +67,12 @@ def generate_tile(z, x, y, samples=None):
     os.makedirs(os.path.dirname(tile_path), exist_ok=True)
 
     bounds = mercantile.bounds(x, y, z)
+
+    if (bounds.north < US_BOUNDS["lat_min"] or bounds.south > US_BOUNDS["lat_max"] or
+        bounds.east < US_BOUNDS["lon_min"] or bounds.west > US_BOUNDS["lon_max"]):
+        print(f"Skipping tile z={z} x={x} y={y} — outside U.S.")
+        return None
+    
     lats = np.linspace(bounds.south, bounds.north, samples)
     lons = np.linspace(bounds.west, bounds.east, samples)
 

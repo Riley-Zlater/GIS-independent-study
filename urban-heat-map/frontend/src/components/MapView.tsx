@@ -20,7 +20,7 @@ const MapView: React.FC = () => {
                 center={[37.8, -96]} // Center of the US
                 zoom={5}
                 minZoom={5}
-                maxZoom={7}
+                maxZoom={5}
                 style={{ height: "100%", width: "100%" }}
                 maxBounds={[[49.384358, -125.0], [24.396308, -66.93457]]} // US bounding box
                 whenCreated={mapInstance => { mapRef.current = mapInstance; }}

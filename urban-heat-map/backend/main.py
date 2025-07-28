@@ -1,6 +1,7 @@
 # backend/main.py
 from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 import os
 
 from tile_generator import generate_tile
@@ -29,3 +30,6 @@ async def serve_tile(z: int, x: int, y: int):
             return Response(content=f.read(), media_type="image/png")
     else:
         return Response(content="Tile not found", status_code=404)
+
+
+app.mount("/static", StaticFiles(directory="cache/stitched"), name="static")

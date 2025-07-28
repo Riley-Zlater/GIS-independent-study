@@ -13,7 +13,7 @@ def tile_in_us(bounds):
         bounds.west < US_LON_MAX and bounds.east > US_LON_MIN
     )
 
-def precompute_tiles(min_zoom=2, max_zoom=5):
+def precompute_tiles(min_zoom=5, max_zoom=5):
     total = 0
     for zoom in range(min_zoom, max_zoom + 1):
         for x in range(2**zoom):
@@ -27,4 +27,4 @@ def precompute_tiles(min_zoom=2, max_zoom=5):
     print(f"✅ Done. Generated {total} US tiles from zoom {min_zoom} to {max_zoom}.")
 
 if __name__ == "__main__":
-    precompute_tiles(min_zoom=2, max_zoom=5)
+    precompute_tiles(min_zoom=5, max_zoom=5)
