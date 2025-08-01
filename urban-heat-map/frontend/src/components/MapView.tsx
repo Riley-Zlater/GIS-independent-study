@@ -27,10 +27,9 @@ const MapView: React.FC = () => {
             <MapContainer
                 center={[37.8, -96]}
                 zoom={5}
-                minZoom={5}
+                minZoom={4}
                 maxZoom={5}
                 style={{ height: "100%", width: "100%" }}
-                maxBounds={[[49.384358, -125.0], [24.396308, -66.93457]]}
                 whenCreated={mapInstance => { mapRef.current = mapInstance; }}
             >
                 <TileLayer
@@ -57,9 +56,9 @@ const MapView: React.FC = () => {
                 <button onClick={() => toggleHeatmap('temperature')}>
                     {activeHeatmap === 'temperature' ? 'Hide Temperature Heat Map' : 'Show Temperature Heat Map'}
                 </button>
-                <button onClick={() => toggleHeatmap('wind')} style={{ marginLeft: 10 }}>
+                {/* <button onClick={() => toggleHeatmap('wind')} style={{ marginLeft: 10 }}>
                     {activeHeatmap === 'wind' ? 'Hide Wind Speed Heat Map' : 'Show Wind Speed Heat Map'}
-                </button>
+                </button> */}
             </div>
         </div>
     );

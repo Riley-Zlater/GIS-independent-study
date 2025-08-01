@@ -7,6 +7,10 @@ backend/cache/
 # Ignore compiled Python files
 backend/__pycache__/
 
+# Data files
+backend/gdas.t18z.pgrb2.0p25.f000
+backend/gdas.t18z.pgrb2.0p25.f000.5b7b6.idx
+
 # Ignore node modules for frontend
 frontend/node_modules/
 
